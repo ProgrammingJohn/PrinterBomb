@@ -53,22 +53,22 @@ if __name__ == "__main__":
   else:
     for i in scan[1]:
       print(f"{bcolors.OKCYAN}{i[0]} : {i[1][0]} ({i[1][2].strip()})")
-    path = input(f'{bcolors.ENDC}{bcolors.BOLD}path: ')
-    cont = input(f"{bcolors.ENDC}{bcolors.BOLD}print on all? y/n: ")
+    path = input(f'{bcolors.ENDC}{bcolors.BOLD}File to print (path): ')
+    cont = input(f"{bcolors.ENDC}{bcolors.BOLD}Print on all local printers? y/n: ")
     if cont == 'y':
       for i in scan[1]:
         printer_ip = i[0]
         if 'ENVY' not in i[1][0]:
           do_print(path, printer_ip)
         else:
-          print(f'{bcolors.ENDC}{bcolors.FAIL}ENVY printer doesn\'t support raw printing')
+          print(f'{bcolors.ENDC}{bcolors.FAIL}Printer doesn\'t support raw printing')
       print(f"\n{bcolors.ENDC}{bcolors.OKGREEN}-- done ----------\n")
       # time.sleep(2)
       for i in scan[1]:
         print(f"{bcolors.ENDC}{bcolors.OKCYAN}{i[0]} : {i[1][0]} ({i[1][2].strip()})")
     else:
-      if input(f"{bcolors.ENDC}{bcolors.BOLD}print to one? y/n: ") == "y":
-        printer_ip = input('printer ip: ')
+      if input(f"{bcolors.ENDC}{bcolors.BOLD}Print to one device? y/n: ") == "y":
+        printer_ip = input('Printer ip (from list above): ')
         if 'ENVY' not in i[1][0]:
           do_print(path, printer_ip)
           print(f"\n{bcolors.ENDC}{bcolors.OKGREEN}-- done ----------\n")
@@ -76,4 +76,4 @@ if __name__ == "__main__":
           i = scan[1][a.index(printer_ip)]
           print(f"{bcolors.ENDC}{bcolors.OKCYAN}{i[0]} : {i[1][0]} ({i[1][2].strip()})")
         else:
-          print(f'{bcolors.ENDC}{bcolors.FAIL}ENVY printer doesn\'t support raw printing')
+          print(f'{bcolors.ENDC}{bcolors.FAIL}printer doesn\'t support raw printing')
